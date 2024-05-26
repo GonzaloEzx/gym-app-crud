@@ -17,6 +17,10 @@ $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <div class="container">
         <h2>Clients List</h2>
+        <nav class="nav mb-3">
+            <a class="nav-link" href="admin_dashboard.php">Admin Dashboard</a>
+            <a class="nav-link" href="owner_dashboard.php">Owner Dashboard</a>
+        </nav>
         <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#addClientModal">Add Client</button>
         <table class="table" id="clientsTable">
             <thead>
