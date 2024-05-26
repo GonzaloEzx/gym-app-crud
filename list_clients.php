@@ -29,7 +29,10 @@ $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
-                    <th>Payment Status</th>
+                    <th>Estado de pago</th>
+                    <th>Fecha de facturación</th>
+                    <th>Fecha de pago establecida</th>
+                    <th>Estado de la obligación</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -41,6 +44,9 @@ $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?= $client['email'] ?></td>
                         <td><?= $client['phone'] ?></td>
                         <td><?= $client['payment_status'] ?></td>
+                        <td><?= $client['billing_date'] ?></td>
+                        <td><?= $client['payment_due_date'] ?></td>
+                        <td><?= $client['obligation_status'] ?></td>
                         <td>
                             <button class="btn btn-primary edit-btn" data-id="<?= $client['id'] ?>" data-bs-toggle="modal" data-bs-target="#editClientModal">Edit</button>
                             <form method="POST" action="delete_client.php" class="d-inline">
@@ -77,8 +83,16 @@ $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <input type="text" class="form-control" id="phone" name="phone" required>
                         </div>
                         <div class="mb-3">
-                            <label for="payment_status" class="form-label">Payment Status</label>
+                            <label for="payment_status" class="form-label">Estado de pago</label>
                             <input type="text" class="form-control" id="payment_status" name="payment_status" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="billing_date" class="form-label">Fecha de facturación</label>
+                            <input type="date" class="form-control" id="billing_date" name="billing_date">
+                        </div>
+                        <div class="mb-3">
+                            <label for="payment_due_date" class="form-label">Fecha de pago establecida</label>
+                            <input type="date" class="form-control" id="payment_due_date" name="payment_due_date">
                         </div>
                         <button type="submit" class="btn btn-success">Add Client</button>
                     </form>
@@ -111,8 +125,20 @@ $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <input type="text" class="form-control" id="editClientPhone" name="phone" required>
                         </div>
                         <div class="mb-3">
-                            <label for="editClientPaymentStatus" class="form-label">Payment Status</label>
+                            <label for="editClientPaymentStatus" class="form-label">Estado de pago</label>
                             <input type="text" class="form-control" id="editClientPaymentStatus" name="payment_status" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editClientBillingDate" class="form-label">Fecha de facturación</label>
+                            <input type="date" class="form-control" id="editClientBillingDate" name="billing_date">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editClientPaymentDueDate" class="form-label">Fecha de pago establecida</label>
+                            <input type="date" class="form-control" id="editClientPaymentDueDate" name="payment_due_date">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editClientObligationStatus" class="form-label">Estado de la obligación</label>
+                            <input type="text" class="form-control" id="editClientObligationStatus" name="obligation_status">
                         </div>
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
@@ -141,6 +167,9 @@ $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         $('#editClientEmail').val(client.email);
                         $('#editClientPhone').val(client.phone);
                         $('#editClientPaymentStatus').val(client.payment_status);
+                        $('#editClientBillingDate').val(client.billing_date);
+                        $('#editClientPaymentDueDate').val(client.payment_due_date);
+                        $('#editClientObligationStatus').val(client.obligation_status);
                     }
                 });
             });
