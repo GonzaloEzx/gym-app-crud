@@ -35,10 +35,6 @@ $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td><?= $client['obligation_status'] ?></td>
                 <td>
                     <button class="btn btn-primary edit-btn" data-id="<?= $client['id'] ?>" data-bs-toggle="modal" data-bs-target="#editClientModal">Edit</button>
-                    <form method="POST" action="delete_client.php" class="d-inline">
-                        <input type="hidden" name="id" value="<?= $client['id'] ?>">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
                 </td>
             </tr>
         <?php endforeach; ?>
