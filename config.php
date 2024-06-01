@@ -1,7 +1,7 @@
 <?php
 
 $host = 'localhost';
-$dbname = 'gym_db';
+$dbname = 'u347774250_gym';
 $username = 'root';
 $password = '';
 
